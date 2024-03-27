@@ -12,7 +12,7 @@ def add_new_todo():
     # a widget like text_input() for example
     this_todo = st.session_state['new_todo']
     # append this new to-do item to the list of todos (add line break also)
-    all_todos_list.append(this_todo.title() + "\n")
+    all_todos_list.append(this_todo.capitalize() + "\n")
     # save the updated list back to external file also
     functions.write_todos(all_todos_list)
     # Reset or Clear the text input after adding the new to-do item
