@@ -5,6 +5,8 @@ import functions
 
 all_todos_list = functions.get_todos()
 
+# we can make the page expands to full screen width bt stays responsive
+st.set_page_config(layout="wide")
 
 def add_new_todo():
     # st.session_state is a dict holding all values that users enters,
@@ -23,8 +25,13 @@ def add_new_todo():
 # The components below will be shown by order on the webpage
 st.title("To-Do App")
 st.subheader("This is a simple To-Do app")
-st.write("This app is to increase your productivity.")
+# we can html in st.write() but add the `unsafe_allow_html=True` to parse the syntax
+st.write("This app is to increase your <strong><em>productivity</em></strong>.", unsafe_allow_html=True)
 
+st.text_input(label="",
+              placeholder="Enter a new to-do item...",
+              on_change=add_new_todo, key='new_todo')
+              
 for index, todo in enumerate(all_todos_list):
     # st.checkbox() returns a boolean value indicating current state of the checkbox
     checkbox_value = st.checkbox(todo, key=todo)  # to-do item to maintain uniqueness of key
@@ -37,6 +44,6 @@ for index, todo in enumerate(all_todos_list):
         # refresh for checkbox change to be shown
         st.rerun()
 
-st.text_input(label="",
-              placeholder="Enter a new to-do item...",
-              on_change=add_new_todo, key='new_todo')
+# st.text_input(label="",
+#               placeholder="Enter a new to-do item...",
+#               on_change=add_new_todo, key='new_todo')
