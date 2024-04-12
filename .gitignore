@@ -3,3 +3,13 @@
 
 # Ignore Python bytecode
 __pycache__/
+
+# Ignore .env file 
+.env
+
+# Ignore .vscode folder
+.vscode/
+
+# Ignore Exercises folder
+Exercises/
+
